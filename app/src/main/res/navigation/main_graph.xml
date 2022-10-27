@@ -18,14 +18,22 @@
         android:id="@+id/secondFragment"
         android:name="com.metehanbolat.darkthemeimplementation.fragment.SecondFragment"
         android:label="SecondFragment"
-        tools:layout="@layout/fragment_second" >
+        tools:layout="@layout/fragment_second">
         <action
             android:id="@+id/action_secondFragment_to_secondActivity"
             app:destination="@id/secondActivity" />
+        <action
+            android:id="@+id/action_secondFragment_to_bottomSheetFragment"
+            app:destination="@id/bottomSheetFragment" />
     </fragment>
     <activity
         android:id="@+id/secondActivity"
         android:name="com.metehanbolat.darkthemeimplementation.SecondActivity"
         android:label="activity_second"
         tools:layout="@layout/activity_second" />
+    <dialog
+        android:id="@+id/bottomSheetFragment"
+        android:name="com.metehanbolat.darkthemeimplementation.fragment.BottomSheetFragment"
+        android:label="BottomSheetFragment"
+        tools:layout="@layout/fragment_bottom_sheet" />
 </navigation>

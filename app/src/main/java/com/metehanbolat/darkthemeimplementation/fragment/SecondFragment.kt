@@ -19,6 +19,7 @@ class SecondFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
@@ -27,6 +28,11 @@ class SecondFragment: Fragment() {
 
         binding.secondFragmentButton.setOnClickListener {
             val action = SecondFragmentDirections.actionSecondFragmentToSecondActivity()
+            findNavController().navigate(action)
+        }
+
+        binding.secondFragmentButton2.setOnClickListener {
+            val action = SecondFragmentDirections.actionSecondFragmentToBottomSheetFragment()
             findNavController().navigate(action)
         }
     }

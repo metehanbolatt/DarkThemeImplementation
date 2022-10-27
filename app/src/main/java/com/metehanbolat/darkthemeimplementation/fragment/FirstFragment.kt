@@ -5,11 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.metehanbolat.darkthemeimplementation.ThemeChanger
 import com.metehanbolat.darkthemeimplementation.databinding.FragmentFirstBinding
-import kotlinx.coroutines.launch
 
 class FirstFragment: Fragment() {
 
@@ -22,14 +19,7 @@ class FirstFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
-        lifecycleScope.launch {
-            ThemeChanger(requireContext()).setUIModel()
-        }
-        lifecycleScope.launch {
-            ThemeChanger(requireContext()).uiMode.collect {
-                binding.darkModeCheckBox.isChecked = it
-            }
-        }
+
         return binding.root
     }
 
@@ -39,12 +29,6 @@ class FirstFragment: Fragment() {
         binding.firstFragmentButton.setOnClickListener {
             val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment()
             findNavController().navigate(action)
-        }
-
-        binding.darkModeCheckBox.setOnCheckedChangeListener { _, isChecked ->
-            lifecycleScope.launch {
-                ThemeChanger(requireContext()).saveToDataStore(requireContext(), isChecked)
-            }
         }
     }
 
